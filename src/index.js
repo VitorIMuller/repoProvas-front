@@ -1,1 +1,4 @@
-<h1>Hello Word</h1>
+import reactDom from "react-dom";
+import App from "./app"
+
+reactDom.render(<App />, document.querySelector(".root"))
