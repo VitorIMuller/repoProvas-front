@@ -11,16 +11,19 @@ import LogoName from "../../Assets/LogoName.png"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Assets/Loading"
+import * as api from "../../Services/api"
+import useAuth from "../../Hooks/useAuth"
 
 
 export default function SignIn() {
+    const { setUser } = useAuth()
 
     const [button, setButton] = useState(true);
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     })
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     function handleInputChange(e) {
         formData[e.target.name] = e.target.value;
@@ -28,23 +31,23 @@ export default function SignIn() {
     }
 
     function handleSignIn(e) {
-        navigate("/home")
         e.preventDefault();
-        // if (formData.email.length === 0 || formData.password.length === 0) {
-        //     alert("Favor Preencher os campos")
-        //     window.location.reload()
-        // }
+        if (formData.email.length === 0 || formData.password.length === 0) {
+            alert("Favor Preencher os campos")
+            window.location.reload()
+        }
         setButton(false)
-        // const promise = api.signIn(formData)
-        // promise.then((response) => {
-        //     setUser(response.data)
-        // })
-        // promise.catch((error) => {
-        //     if (error.message === "Request failed with status code 404") {
-        //         alert("Email/senha incorretos ou não existem")
-        //     }
-        //     window.location.reload()
-        // });
+        const promise = api.signIn(formData)
+        promise.then((response) => {
+            setUser(response.data)
+            navigate("/home")
+        })
+        promise.catch((error) => {
+            if (error.message === "Request failed with status code 404") {
+                alert("Email/senha incorretos ou não existem")
+            }
+            window.location.reload()
+        });
     }
     return (
         <>

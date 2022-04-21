@@ -8,7 +8,13 @@ async function signUp(formaData) {
     const promise = await axios.post(`${BASE_URL}/signUp`, formaData)
     return promise
 }
+async function signIn(formaData) {
+    console.log(formaData)
+    const promise = await axios.post(`${BASE_URL}/signIn`, formaData)
+    return promise
+}
 
 export {
-    signUp
+    signUp,
+    signIn
 }

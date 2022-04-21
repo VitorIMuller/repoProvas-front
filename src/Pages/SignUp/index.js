@@ -50,7 +50,7 @@ export default function SignUp() {
         <>
             <TopBar><img src={LogoName} /></TopBar>
             <Container>
-                <StyledButton > Entrar Com Github</StyledButton>
+                <StyledButton >Entrar Com Github</StyledButton>
                 <p>ou</p>
                 <Form onSubmit={handleSignIn}>
                     <StyledInput
@@ -83,8 +83,6 @@ export default function SignUp() {
                 </Form>
             </Container>
         </>
-
-
     )
 }
 

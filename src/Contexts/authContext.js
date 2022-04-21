@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         if (user) {
-            location.pathname === '/' && navigate('/timeline');
+            location.pathname === '/' && navigate('/home');
         } else {
             navigate('/');
         }
@@ -22,17 +22,14 @@ export function AuthProvider({ children }) {
         navigate('/');
     }
 
-    function hashtagRedirect(value) {
-        navigate(`/home`);
-    }
 
     return (
         <AuthContext.Provider
             value={{
                 user,
                 setUser,
-                logOut,
-                hashtagRedirect
+                logOut
+
             }}
         >
             {children}
