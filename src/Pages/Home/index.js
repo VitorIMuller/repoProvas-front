@@ -8,6 +8,8 @@ import { Typography } from '@mui/material';
 import * as services from "../../Services/services"
 import useAuth from '../../Hooks/useAuth';
 import CircularProgress from '@mui/material/CircularProgress';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 
 export default function Home() {
@@ -18,10 +20,7 @@ export default function Home() {
     const [teacher, setTeacher] = useState([])
     const [loading, setLoading] = useState(false)
 
-    function handleChange(newOption) {
-        console.log(newOption)
-        setOption(newOption);
-    };
+
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -45,12 +44,26 @@ export default function Home() {
         getItens()
     }, []);
 
+    const handleChange = (e, newOption) => {
+        setOption(newOption)
+    };
+
 
     return (
 
         <Container component="main" maxWidth="xl">
-            <TopMenu option={option}
-                handleChange={handleChange} />
+            <ToggleButtonGroup
+                color="secondary"
+                value={option}
+                exclusive
+                onChange={handleChange}
+                fullWidth={true}
+            >
+                <ToggleButton value="disciplina"  >DISCIPLINA</ToggleButton>
+                <ToggleButton value="instrutor" >PESSOA INSTRUTORA</ToggleButton>
+                <ToggleButton value="adicionar">ADICIONAR</ToggleButton>
+            </ToggleButtonGroup>
+
             <Container component="main" maxWidth="xl" sx={{
                 marginTop: 0,
                 display: 'flex',

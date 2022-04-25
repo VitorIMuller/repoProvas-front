@@ -6,7 +6,6 @@ import { TeacherItem } from '../TeacherItem/TeacherItem';
 import { TestItemTeacher } from '../TestItemTeacher/TestItemTeacher';
 
 export function TeacherList({ repository }) {
-  console.log(repository)
   return (
     <List
       sx={{ width: '100%', maxWidth: "none", bgcolor: 'background.paper' }}

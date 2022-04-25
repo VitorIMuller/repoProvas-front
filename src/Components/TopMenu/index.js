@@ -11,9 +11,10 @@ function TopMenu(option, handleChange) {
             value={option}
             exclusive
             onChange={handleChange}
+            fullWidth={true}
         >
-            <ToggleButton fullWidth={true} value="disciplina" >DISCIPLINA</ToggleButton>
-            <ToggleButton value="instrutor">PESSOA INSTRUTORA</ToggleButton>
+            <ToggleButton value="disciplina"  >DISCIPLINA</ToggleButton>
+            <ToggleButton value="instrutor" >PESSOA INSTRUTORA</ToggleButton>
             <ToggleButton value="adicionar">ADICIONAR</ToggleButton>
         </ToggleButtonGroup>
     );
