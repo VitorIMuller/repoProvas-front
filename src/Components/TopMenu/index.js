@@ -1,17 +1,9 @@
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { useState } from 'react';
 
-function TopMenu() {
+function TopMenu(option, handleChange) {
 
-    const [option, setOption] = useState('DISCIPLINA');
 
-    const handleChange = (
-        event,
-        newOption
-    ) => {
-        setOption(newOption);
-    };
 
     return (
         <ToggleButtonGroup
@@ -20,9 +12,9 @@ function TopMenu() {
             exclusive
             onChange={handleChange}
         >
-            <ToggleButton fullWidth={true} value="DISCIPLINA">DISCIPLINA</ToggleButton>
-            <ToggleButton value="PESSOA INSTRUTORA">PESSOA INSTRUTORA</ToggleButton>
-            <ToggleButton value="ADICIONAR">ADICIONAR</ToggleButton>
+            <ToggleButton fullWidth={true} value="disciplina">DISCIPLINA</ToggleButton>
+            <ToggleButton value="disciplina">PESSOA INSTRUTORA</ToggleButton>
+            <ToggleButton value="adicionar">ADICIONAR</ToggleButton>
         </ToggleButtonGroup>
     );
 
