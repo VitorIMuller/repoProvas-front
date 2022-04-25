@@ -35,7 +35,7 @@ export function TermItem({ children, name }) {
           {name}º Período
         </Typography>
         } />
-        {open ? <ExpandLess color="secondary" /> : <ExpandMore sx={{ color: theme.palette.mode === 'dark' ? '#ffffff' : '#111111', }} />}
+        {open ? <ExpandLess color="secondary" /> : <ExpandMore color="secondary" />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>

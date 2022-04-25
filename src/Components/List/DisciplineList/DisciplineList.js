@@ -7,7 +7,6 @@ import { CategoryItem } from '../CategoryItem/CategoryItem';
 import { TestItem } from '../TestItem/TestItem';
 
 export function DisciplineList({ repository }) {
-
   return (
     <List
       sx={{ width: '100%', maxWidth: "none", bgcolor: 'background.paper' }}

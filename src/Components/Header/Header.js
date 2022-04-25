@@ -26,21 +26,18 @@ function Header() {
             <Grid
                 container
                 spacing={2}
-                justifyContent="center"
-                alignContent="center"
+
             >
                 <Grid item xs={12}
                     display="flex"
-                    justifyContent="space-beetween"
-                    alignContent="center"
+
 
                 >
                     <img src={LogoName} alt="" />
                     {user &&
                         <Avatar sx={{ m: 0.5, bgcolor: 'secondary.main' }}
                             display="flex"
-                            justifyContent="space-beetween"
-                            alignContent="center"
+
 
                         >
                             <LogoutOutlinedIcon onClick={() => logOut()} />

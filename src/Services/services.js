@@ -10,6 +10,7 @@ export async function fetchDisciplineData(token) {
     const teachers = await api.getAllTeachers(token)
 
 
+
     const data = terms.map(term => {
         return {
             termId: term.id,
