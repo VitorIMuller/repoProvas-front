@@ -58,6 +58,13 @@ async function getAllDisciplines(token) {
     return data.data
 }
 
+async function addViewCount(token, id) {
+    const config = createConfig(token)
+
+    await axios.patch(`${BASE_URL}/test/${id}/addView`, {}, config)
+
+}
+
 export {
     signUp,
     signIn,
@@ -65,5 +72,6 @@ export {
     getAllTerms,
     getAllTeachers,
     getAllTests,
-    getAllDisciplines
+    getAllDisciplines,
+    addViewCount
 }

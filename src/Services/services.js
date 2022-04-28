@@ -29,6 +29,7 @@ export async function fetchDisciplineData(token) {
                                         test.teacherDisciplineId === teacherDiscipline.id).map((test) => {
                                             return {
                                                 testId: test.id,
+                                                testViews: test.views,
                                                 testName: test.name,
                                                 testPDFUrl: test.pdfUrl,
                                                 teacher: teachers.filter(teacher => teacher.id === teacherDiscipline.teacherId)
