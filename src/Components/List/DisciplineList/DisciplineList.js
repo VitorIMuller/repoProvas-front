@@ -7,6 +7,7 @@ import { CategoryItem } from '../CategoryItem/CategoryItem';
 import { TestItem } from '../TestItem/TestItem';
 
 export function DisciplineList({ repository }) {
+  console.log(repository)
   return (
     <List
       sx={{ width: '100%', maxWidth: "none", bgcolor: 'background.paper' }}
@@ -23,7 +24,7 @@ export function DisciplineList({ repository }) {
               key={`discipline_${id}`}
               name={el.disciplineName}
             >
-              {el.teacherDisciplines[0].categories.map((el, id) =>
+              {el.categories.map((el, id) =>
                 <CategoryItem
                   key={`category_${id}`}
                   name={el.categoryName}
@@ -33,7 +34,7 @@ export function DisciplineList({ repository }) {
                       key={`test_${id}`}
                       name={el.testName}
                       url={el.testPDFUrl}
-                      teacher={el.teacher[0]}
+                      teacher={el.teacherName}
                       id={el.testId}
                       views={el.testViews}
                     />)}

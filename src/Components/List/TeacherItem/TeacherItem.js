@@ -15,7 +15,6 @@ export function TeacherItem({ children, name }) {
 
   const [open, setOpen] = useState(false);
   const [color, setColor] = useState({})
-  const theme = useTheme()
 
   const handleClick = () => {
     setOpen(!open);

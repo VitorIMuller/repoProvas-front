@@ -27,7 +27,7 @@ export default function Home() {
     const [teacher, setTeacher] = useState([])
     const [loading, setLoading] = useState(false)
     const [reload, setReload] = useState(false)
-
+    const [searchValue, setSearchValue] = useState("")
     const [repositoryFiltered, setRepositoryFiltered] = useState({
         discipline: [],
         teacher: []
@@ -54,10 +54,29 @@ export default function Home() {
     }
 
     useEffect(() => {
+        setRepositoryFiltered({
+            discipline: filter.filterDiscipline(discipline, searchValue),
+            teacher: filter.filterTeacher(teacher, searchValue)
+        })
+    }, [searchValue, teacher, discipline, option]);
+
+    useEffect(() => {
         getItens()
     }, []);
 
+    const handleChange = (
+        event,
+        newOption
+    ) => {
+        if (newOption !== null) {
+            setOption(newOption)
+            setSearchValue("")
+        }
+    };
 
+    function handleSearchInput(input) {
+        setSearchValue(input)
+    }
 
 
 
@@ -74,11 +93,10 @@ export default function Home() {
             >
                 <TopMenu
                     option={option}
-                    setOption={setOption}
-                    discipline={discipline}
-                    teachers={teacher}
-                    repositoryFiltered={repositoryFiltered}
-                    setRepositoryFiltered={setRepositoryFiltered}
+                    handleChange={handleChange}
+                    searchValue={searchValue}
+                    handleSearch={handleSearchInput}
+
                 />
             </Box>
             <Container component="main" maxWidth="xl" sx={{

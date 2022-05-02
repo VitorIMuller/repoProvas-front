@@ -11,6 +11,7 @@ export function TestItem({ name, url, teacher, id, views }) {
 
   const { user } = useAuth()
 
+  console.log(teacher)
   const handleClick = async () => {
     window.open(url, "_blank");
     await handleAddViewCount()
@@ -26,6 +27,8 @@ export function TestItem({ name, url, teacher, id, views }) {
     }
   }
 
+  console.log(id)
+
 
   return (
     <>
@@ -36,7 +39,7 @@ export function TestItem({ name, url, teacher, id, views }) {
           </Typography>
         } secondary={
           <Typography component="h1" variant="body2" >
-            {teacher.name}
+            {teacher}
           </Typography>
         } />
         <Typography sx={{ opacity: 0.5 }} component="h1" variant="body2" >

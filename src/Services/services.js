@@ -10,7 +10,6 @@ export async function fetchDisciplineData(token) {
     const teachers = await api.getAllTeachers(token)
 
 
-
     const data = terms.map(term => {
         return {
             termId: term.id,
@@ -19,30 +18,27 @@ export async function fetchDisciplineData(token) {
                 return {
                     disciplineId: discipline.id,
                     disciplineName: discipline.name,
-                    teacherDisciplines: discipline.teachersDisciplines.map((teacherDiscipline) => {
+                    categories: categories.map((category) => {
                         return {
-                            categories: categories.map(category => {
+                            categoryId: category.id,
+                            categoryName: category.name,
+                            tests: category.tests.map((test) => {
                                 return {
-                                    categoryId: category.id,
-                                    categoryName: category.name,
-                                    tests: category.tests.filter((test) =>
-                                        test.teacherDisciplineId === teacherDiscipline.id).map((test) => {
-                                            return {
-                                                testId: test.id,
-                                                testViews: test.views,
-                                                testName: test.name,
-                                                testPDFUrl: test.pdfUrl,
-                                                teacher: teachers.filter(teacher => teacher.id === teacherDiscipline.teacherId)
-                                            }
-                                        })
+                                    testId: test.id,
+                                    testName: test.name,
+                                    pdfUrl: test.pdfUrl,
+                                    testViews: test.views,
+                                    disciplineId: test.teachersDisciplines.disciplineId,
+                                    teacherName: teachers.find((teacher) => teacher.id === test.teachersDisciplines.teacherId).name,
                                 }
-                            })
+                            }).filter((test) => test.disciplineId === discipline.id)
                         }
                     })
                 }
             })
         }
-    })
+    }
+    )
 
     return data
 }
@@ -90,6 +86,7 @@ export async function feachTeachersData(token) {
                                         testName: el.name,
                                         testId: el.id,
                                         testPdfUrl: el.pdfUrl,
+                                        testViews: el.views,
                                         testDisciplineId: el.teachersDisciplines.disciplineId,
                                         testDisciplineName: disciplines.find((discipline) => discipline.id === el.teachersDisciplines.disciplineId).name
                                     }

@@ -25,6 +25,8 @@ export function TeacherList({ repository }) {
                   name={test.testName}
                   url={test.testPdfUrl}
                   discipline={test.testDisciplineName}
+                  id={test.testId}
+                  views={test.testViews}
                 />
               )}
             </CategoryItem>)
