@@ -5,9 +5,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import useAuth from '../../Hooks/useAuth';
 import { Box } from '@mui/material';
-import * as filter from '../../utils/filter/filter'
-import * as services from "../../Services/services"
-import CircularProgress from '@mui/material/CircularProgress';
+import * as api from "../../Services/api"
 
 
 
@@ -16,8 +14,7 @@ function TopMenu({ option, handleChange, searchValue, handleSearch }) {
 
 
     const { user } = useAuth()
-    const [loading, setLoading] = useState(true);
-    const [list, setList] = useState([{ name: "...carregando opções" }])
+    const [list, setList] = useState([{ name: "Carregando..." }])
     const [optionList, setOptionList] = useState({
         discipline: [],
         teacher: []
@@ -30,8 +27,8 @@ function TopMenu({ option, handleChange, searchValue, handleSearch }) {
 
 
     async function fetchData() {
-        const disciplines = await services.fetchDisciplineData(user)
-        const teachers = await services.feachTeachersData(user)
+        const disciplines = await api.getAllDisciplines(user)
+        const teachers = await api.getAllTeachers(user)
 
         setOptionList({
             discipline: disciplines,
@@ -74,7 +71,6 @@ function TopMenu({ option, handleChange, searchValue, handleSearch }) {
     useEffect(() => {
         fetchData()
     });
-
 
 
 

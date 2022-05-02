@@ -5,13 +5,10 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import * as api from "../../../Services/api"
 import useAuth from '../../../Hooks/useAuth';
-import { useEffect } from 'react';
-
 export function TestItem({ name, url, teacher, id, views }) {
 
   const { user } = useAuth()
 
-  console.log(teacher)
   const handleClick = async () => {
     window.open(url, "_blank");
     await handleAddViewCount()
@@ -26,8 +23,6 @@ export function TestItem({ name, url, teacher, id, views }) {
       console.log(error)
     }
   }
-
-  console.log(id)
 
 
   return (

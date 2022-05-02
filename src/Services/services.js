@@ -39,7 +39,6 @@ export async function fetchDisciplineData(token) {
         }
     }
     )
-
     return data
 }
 
