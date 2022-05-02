@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import { successModal } from '../../modals/sucessModal';
 import { errorModal } from "../../modals/errorModal";
 
-export default function AddTest() {
+export default function AddTest(Props) {
 
     const { user } = useAuth()
 
@@ -71,6 +71,9 @@ export default function AddTest() {
                 discipline: "",
                 teacher: ""
             });
+            setLoading(false)
+
+            Props.setReload(!Props.reloadState)
             setLoading(false)
 
 
@@ -139,9 +142,9 @@ export default function AddTest() {
                     variant="filled"
                     required
                     type="text"
-                    id="name"
+                    id="title"
                     label="Nome da Prova"
-                    name="name"
+                    name="title"
                     InputLabelProps={{
                         color: "secondary"
                     }}
@@ -166,7 +169,7 @@ export default function AddTest() {
                 <AutoComplete
                     disablePortal
                     required
-                    id="combo-box-demo"
+                    id="category"
                     options={optionList.category.map((option) => option.name)}
                     sx={{ width: '100%' }}
                     onInputChange={(e, value) => handleFormInput("category", value)}
@@ -175,7 +178,7 @@ export default function AddTest() {
                 <AutoComplete
                     disablePortal
                     required
-                    id="combo-box-demo"
+                    id="discipline"
                     options={optionList.discipline.map((option) => option.name)}
                     sx={{ width: '100%' }}
                     onInputChange={(e, value) => handleFormInput("discipline", value)}
