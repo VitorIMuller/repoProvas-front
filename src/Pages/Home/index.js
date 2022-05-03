@@ -62,7 +62,7 @@ export default function Home() {
 
     useEffect(() => {
         getItens()
-    }, []);
+    }, [reload]);
 
     const handleChange = (
         event,
